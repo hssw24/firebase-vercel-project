@@ -1,3 +1,5 @@
+<!--
+
 <!DOCTYPE html> 
 <html lang="en">
 <head>
@@ -7,5 +9,83 @@
 </head>
 <body>
   <h1>Firebase Vercel Project</h1>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase Vercel Project</title>
+</head>
+<body>
+  <h1>Firebase Vercel Project</h1>
+  
+  <h2>Datensatz hinzufügen</h2>
+  <button onclick="addData()">Add Data</button>
+
+  <h2>Datensatz bearbeiten</h2>
+  <button onclick="editData('DATA_ID')">Edit Data</button>
+
+  <h2>Datensatz löschen</h2>
+  <button onclick="deleteData('DATA_ID')">Delete Data</button>
+
+  <h2>Alle Datensätze löschen</h2>
+  <button onclick="deleteAllData()">Delete All Data</button>
+
+  <h2>Gesamte Datenbank löschen</h2>
+  <button onclick="deleteDatabase()">Delete Database</button>
+
+  <script>
+    async function addData() {
+      const response = await fetch('/api/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: "Beispiel", value: 123 }),
+      });
+      const result = await response.text();
+      alert(result);
+    }
+
+    async function editData(id) {
+      const response = await fetch(`/api/edit/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: "Geänderter Name", value: 456 }),
+      });
+      const result = await response.text();
+      alert(result);
+    }
+
+    async function deleteData(id) {
+      const response = await fetch(`/api/delete/${id}`, {
+        method: 'DELETE',
+      });
+      const result = await response.text();
+      alert(result);
+    }
+
+    async function deleteAllData() {
+      const response = await fetch('/api/delete-all', {
+        method: 'DELETE',
+      });
+      const result = await response.text();
+      alert(result);
+    }
+
+    async function deleteDatabase() {
+      const response = await fetch('/api/delete-database', {
+        method: 'DELETE',
+      });
+      const result = await response.text();
+      alert(result);
+    }
+  </script>
 </body>
 </html>
