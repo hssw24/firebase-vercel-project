@@ -6,7 +6,7 @@ app.use(express.json());
 
 app.post('/add', (req, res) => {
   const newData = req.body;
-  database.ref('https://ampel2a-default-rtdb.europe-west1.firebasedatabase.app').push(newData)
+  database.ref('path/to/your/data').push(newData)
     .then(() => res.status(200).send("Datensatz hinzugefügt."))
     .catch((error) => res.status(500).send("Fehler beim Hinzufügen des Datensatzes: " + error));
 });
@@ -14,20 +14,20 @@ app.post('/add', (req, res) => {
 app.put('/edit/:id', (req, res) => {
   const updateData = req.body;
   const dataId = req.params.id;
-  database.ref('https://ampel2a-default-rtdb.europe-west1.firebasedatabase.app' + dataId).update(updateData)
+  database.ref('path/to/your/data' + dataId).update(updateData)
     .then(() => res.status(200).send("Datensatz aktualisiert."))
     .catch((error) => res.status(500).send("Fehler beim Aktualisieren des Datensatzes: " + error));
 });
 
 app.delete('/delete/:id', (req, res) => {
   const dataId = req.params.id;
-  database.ref('https://ampel2a-default-rtdb.europe-west1.firebasedatabase.app' + dataId).remove()
+  database.ref('path/to/your/data' + dataId).remove()
     .then(() => res.status(200).send("Datensatz gelöscht."))
     .catch((error) => res.status(500).send("Fehler beim Löschen des Datensatzes: " + error));
 });
 
 app.delete('/delete-all', (req, res) => {
-  database.ref('https://ampel2a-default-rtdb.europe-west1.firebasedatabase.app').remove()
+  database.ref('path/to/your/data').remove()
     .then(() => res.status(200).send("Alle Datensätze gelöscht."))
     .catch((error) => res.status(500).send("Fehler beim Löschen der Datensätze: " + error));
 });
