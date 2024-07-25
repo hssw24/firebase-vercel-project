@@ -6,7 +6,7 @@ app.use(express.json());
 
 app.post('/add', (req, res) => {
   const newData = req.body;
-  database.ref('path/to/your/data').push(newData)
+  database.ref('https://ampel2a-default-rtdb.europe-west1.firebasedatabase.app').push(newData)
     .then(() => res.status(200).send("Datensatz hinzugefügt."))
     .catch((error) => res.status(500).send("Fehler beim Hinzufügen des Datensatzes: " + error));
 });
