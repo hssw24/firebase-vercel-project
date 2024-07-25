@@ -1,7 +1,7 @@
 const firebase = require("firebase/app");
 require("firebase/database");
 
-// Deine Firebase-Konfigurationsdaten 
+// Deine Firebase-Konfigurationsdaten  
 const firebaseConfig = {
   apiKey: "AIzaSyCjaAmC50fravoG8NOAlH6t13JSwwIkuc8",
   authDomain: "ampel2a.firebaseapp.com",
