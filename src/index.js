@@ -14,20 +14,20 @@ app.post('/add', (req, res) => {
 app.put('/edit/:id', (req, res) => {
   const updateData = req.body;
   const dataId = req.params.id;
-  database.ref('path/to/your/data/' + dataId).update(updateData)
+  database.ref('https://ampel2a-default-rtdb.europe-west1.firebasedatabase.app' + dataId).update(updateData)
     .then(() => res.status(200).send("Datensatz aktualisiert."))
     .catch((error) => res.status(500).send("Fehler beim Aktualisieren des Datensatzes: " + error));
 });
 
 app.delete('/delete/:id', (req, res) => {
   const dataId = req.params.id;
-  database.ref('path/to/your/data/' + dataId).remove()
+  database.ref('https://ampel2a-default-rtdb.europe-west1.firebasedatabase.app' + dataId).remove()
     .then(() => res.status(200).send("Datensatz gelöscht."))
     .catch((error) => res.status(500).send("Fehler beim Löschen des Datensatzes: " + error));
 });
 
 app.delete('/delete-all', (req, res) => {
-  database.ref('path/to/your/data').remove()
+  database.ref('https://ampel2a-default-rtdb.europe-west1.firebasedatabase.app').remove()
     .then(() => res.status(200).send("Alle Datensätze gelöscht."))
     .catch((error) => res.status(500).send("Fehler beim Löschen der Datensätze: " + error));
 });
